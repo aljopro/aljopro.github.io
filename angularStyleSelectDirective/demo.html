@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stylable Select Directive</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="jcStyleSelect.css" type="text/css">
+
+    <style>
+        body {
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: inherit;
+        }
+        div{
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="MainCtrl" ng-style="{'font-size': selectedFontSize}">
+<p>This is a styled example of the select input.</p>
+<div class="jc-styled">
+    <select jc-style-select ng-options="thing for thing in awesomeThings" ng-model="selectedThing"></select>
+</div>
+<p>This is what the directive looks like without a theme style.</p>
+<div class="no-style">
+    <select jc-style-select ng-options="thing for thing in awesomeThings" ng-model="anotherThing"></select>
+</div>
+<p>Use this select input to change the fontsize.</p>
+<div class="jc-styled">
+    <select jc-style-select ng-options="font for font in fontSizes" ng-model="selectedFontSize"></select>
+</div>
+
+<hr/>
+
+<div>
+    <p>styled value: <em>{{ selectedThing }}</em></p>
+    <p>unstyled value: <em>{{ anotherThing }}</em></p>
+</div>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+<script src="jcStyleSelect.js"></script>
+<script>
+    angular.module('myApp', ['jcStyleSelect'])
+    .controller('MainCtrl', function ($scope) {
+        $scope.awesomeThings = [
+            'HTML5 Boilerplate',
+            'AngularJS',
+            'Karma',
+            'Some really long text to look at'
+        ];
+        $scope.fontSizes = [
+                'inherit',
+            '11px',
+                '12px',
+                '13px',
+                '14px',
+                '15px',
+                '16px',
+                '24px'
+        ];
+
+        $scope.selectedThing = $scope.awesomeThings[0];
+        $scope.anotherThing =  $scope.awesomeThings[0];
+        $scope.selectedFontSize = $scope.fontSizes[0];
+    });
+</script>
+</html>
