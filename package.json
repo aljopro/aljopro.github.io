@@ -4,10 +4,16 @@
   "description": "",
   "author": "John Chappell <aljopro@gmail.com>",
   "license": "MIT",
-    "devDependencies": {
-    "browser-sync": "^2.24.6",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-sass": "^4.0.1"
-  }
+  "scripts": {
+    "start": "gulp serve"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.1.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }

@@ -110,23 +110,14 @@ body {
 .profile {
   flex-shrink: 0;
 
-  width: 95vmin;
-  height: 95vmin;
+  width: 60vmin;
+  height: 60vmin;
   margin: auto;
-
-  background: url("/asset/profile.jpg") no-repeat;
+  border-radius: 50%;
+ 
+  background: url("/asset/profile.png") no-repeat, rgba(99, 218, 56, 0.25);
   background-position: top;
   background-size: cover;
-
-  @media
-  (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi) {
-      & {
-          background: url("/asset/profile_2x.jpg") no-repeat;
-          background-position: top;
-          background-size: cover;
-      }
-  }
 }
 
 .above-fold {
