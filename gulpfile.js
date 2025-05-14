@@ -1,15 +1,14 @@
-const {src, watch, dest, series, task, parallel} = require('gulp');
-const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const browserSync = require('browser-sync').create();
-
+import  {src, watch, dest, series, task, parallel} from "gulp";
+import sass from 'gulp-sass';
+import autoPrefixer from "gulp-autoprefixer";
+import browserSync from 'browser-sync';
 
 const config = {
 	sass: './style/**/*.scss',
 	sassDest: './style'
 }
 
-function serveInit() {
+export function serveInit() {
 	return browserSync.init({
 		server: {
 			baseDir: "./"
@@ -17,35 +16,26 @@ function serveInit() {
 	});
 }
 
-function css() {
+export function css() {
 	return src(config.sass)
 		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer({
+		.pipe(autoPrefixer({
 			cascade: false
 		}))
 		.pipe(dest(config.sassDest))
 		.pipe(browserSync.stream({match: '**/*.css'}));
 }
 
-function cssWatch() {
+export function cssWatch() {
 	watch(config.sass, series(['css']));
 }
 
-function htmlWatch() {
+export function htmlWatch() {
 	watch(['**/*.html', '!(node_modules)/**/*']).on('change', browserSync.reload);
 }
 
-function jsWatch() {
+export function jsWatch() {
 	watch(['**/*.js', '!(node_modules)/**/*']).on('change', browserSync.reload);
 }
 
-const serve = parallel([serveInit, cssWatch, htmlWatch, jsWatch]);
-
-
-module.exports = {
-	default: serve,
-	serve,
-	htmlWatch,
-	css,
-	cssWatch,
-}
+export const serve = parallel([serveInit, cssWatch, htmlWatch, jsWatch]);
