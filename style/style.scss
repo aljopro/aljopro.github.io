@@ -262,8 +262,7 @@ main {
   gap: 1.25rem;
 }
 
-.card,
-.project {
+.card {
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -284,25 +283,11 @@ main {
   margin-bottom: 0.75rem;
 }
 
-.card h3 a,
-.project h3 a {
+.card h3 a {
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
-  }
-}
-
-.projects {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
-
-  h3 {
-    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-    font-size: 1.05rem;
-    margin-bottom: 0.4rem;
   }
 }
 
