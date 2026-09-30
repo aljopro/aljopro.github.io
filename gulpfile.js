@@ -1,5 +1,6 @@
-import  {src, watch, dest, series, task, parallel} from "gulp";
-import sass from 'gulp-sass';
+import { src, watch, dest, series, task, parallel } from "gulp";
+import gulpSass from 'gulp-sass';
+import * as sassLib from 'sass';
 import autoPrefixer from "gulp-autoprefixer";
 import browserSync from 'browser-sync';
 
@@ -7,6 +8,8 @@ const config = {
 	sass: './style/**/*.scss',
 	sassDest: './style'
 }
+
+const sass = gulpSass(sassLib);
 
 export function serveInit() {
 	return browserSync.init({
@@ -23,7 +26,7 @@ export function css() {
 			cascade: false
 		}))
 		.pipe(dest(config.sassDest))
-		.pipe(browserSync.stream({match: '**/*.css'}));
+		.pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
 export function cssWatch() {
